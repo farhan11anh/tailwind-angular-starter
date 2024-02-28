@@ -28,7 +28,8 @@ const routes: Routes = [
   { path: 'dropdown', component: DropdownComponent },
   { path: 'popover', component: PopoverComponent },
   { path: 'tabs', component: TabsComponent },
-  { path: 'tooltip', component: TooltipComponent }
+  { path: 'tooltip', component: TooltipComponent },
+  { path: 'development', loadChildren: () => import('./development/development.module').then(m => m.DevelopmentModule) }
 ];
 
 @NgModule({

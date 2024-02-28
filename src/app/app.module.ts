@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,10 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { PopoverComponent } from './popover/popover.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { DevelopmentModule } from './development/development.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptService } from './services/http-intercept.service';
 
 @NgModule({
   declarations: [
@@ -36,9 +40,19 @@ import { TooltipComponent } from './tooltip/tooltip.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DevelopmentModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: HttpInterceptService,
+      multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
