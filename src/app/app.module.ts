@@ -20,6 +20,10 @@ import { DevelopmentModule } from './development/development.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptService } from './services/http-intercept.service';
+import { NbLayoutModule, NbMenuModule, NbSidebarModule, NbThemeModule } from '@nebular/theme';
+import { NgIconsModule } from '@ng-icons/core';
+import * as heroicons from '@ng-icons/heroicons/solid';
+import * as outlinehero from '@ng-icons/heroicons/outline';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,14 @@ import { HttpInterceptService } from './services/http-intercept.service';
     AppRoutingModule,
     DevelopmentModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NbLayoutModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbSidebarModule.forRoot(),
+    NgIconsModule.withIcons({
+      ...heroicons, ...outlinehero
+    }),
+    NbMenuModule.forRoot()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

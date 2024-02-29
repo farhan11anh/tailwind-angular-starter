@@ -1,0 +1,11 @@
+nb-sidebar.expanded {
+  width: 300px !important; /* Set the width as per your requirement */
+}
+
+nb-layout-header {
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: fixed !important;
+  top: 0 !important;
+}

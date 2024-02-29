@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { NbSidebarService } from '@nebular/theme';
 import { initFlowbite } from 'flowbite';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit {
   title = 'web-app';
 
   constructor(
-    private spinner : NgxSpinnerService
+    private spinner : NgxSpinnerService,
+    private sidebarService: NbSidebarService
   ){
 
   }
@@ -21,6 +23,12 @@ export class AppComponent implements OnInit {
     initFlowbite();
     this.spinner.show();
     this.stopSpinner();
+  }
+
+  toggle() {
+    this.sidebarService.onCollapse().subscribe(()=>{
+      
+    })
   }
 
   stopSpinner(){
